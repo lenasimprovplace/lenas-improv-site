@@ -896,38 +896,71 @@
 
   /* ===== CANCELLATION POLICY ===== */
   #cancellation{background:var(--cream);}
-  .policy-box{
-    background:white;
-    border:3px dashed var(--crimson);
-    border-radius:14px;
-    padding:36px;
+  .policy-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
   }
-  .policy-box ul{
+  .policy-item{
+    background:white;
+    border:3px solid var(--ink);
+    border-radius:12px;
+    padding:6px 22px;
+  }
+  .policy-item summary{
+    padding:16px 0;
+    font-weight:700;
+    font-size:1.02rem;
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .policy-item summary::-webkit-details-marker{display:none;}
+  .policy-item summary:after{
+    content:"+";
+    font-family:'Anton', sans-serif;
+    font-size:1.4rem;
+    color:var(--crimson);
+    margin-left:16px;
+    transition:transform 0.2s ease;
+    flex-shrink:0;
+  }
+  .policy-item[open] summary:after{
+    transform:rotate(45deg);
+  }
+  .policy-item p{
+    font-size:0.94rem;
+    line-height:1.6;
+    padding-bottom:18px;
+    color:#4a3a34;
+  }
+  .policy-item ul{
     list-style:none;
     display:flex;
     flex-direction:column;
-    gap:18px;
+    gap:10px;
+    padding-bottom:18px;
   }
-  .policy-box li{
-    display:flex;
-    gap:16px;
-    align-items:flex-start;
-    font-size:0.98rem;
+  .policy-item li{
+    font-size:0.94rem;
     line-height:1.6;
+    color:#4a3a34;
+    padding-left:18px;
+    position:relative;
+  }
+  .policy-item li:before{
+    content:"\2022";
+    position:absolute;
+    left:0;
+    color:var(--crimson);
   }
   .policy-agreement{
-    margin-top:24px;
-    padding-top:20px;
-    border-top:2px dashed var(--crimson);
+    margin-top:20px;
     font-size:0.88rem;
     font-style:italic;
     color:#4a3a34;
-  }
-  .policy-icon{
-    font-family:'Anton', sans-serif;
-    color:var(--crimson);
-    font-size:1.3rem;
-    min-width:28px;
   }
 
   /* ===== CONTACT ===== */
@@ -1406,19 +1439,50 @@
     <span class="section-num">09</span>
     <h2>Cancellation Policy</h2>
   </div>
-  <div class="policy-box">
-    <ul>
-      <li><span class="policy-icon">01</span> Cancel at least 72 hours before class for a full refund.</li>
-      <li><span class="policy-icon">02</span> Cancel between 48 and 72 hours before class for credit towards a future session (no refund). Credit must be used within 2 months.</li>
-      <li><span class="policy-icon">03</span> Cancellations within 48 hours aren't eligible for a refund or credit.</li>
-      <li><span class="policy-icon">04</span> Advanced students who miss a class can attend a beginner class instead, at no extra cost, subject to space.</li>
-      <li><span class="policy-icon">05</span> Packages (the 4-class monthly Foundation package and the 2-class monthly Foundation Teens package in Voula) are booked and paid in full and can't be cancelled after the first class. Missed a class? Let me know at least 48 hours before and you can make it up within 2 months. For Foundation Teens in Voula, each class builds on the one before, so if you miss the first class you can join from the next start date instead.</li>
-      <li><span class="policy-icon">06</span> Private at-home sessions follow the same windows.</li>
-      <li><span class="policy-icon">07</span> Sound &amp; Story is a one-off workshop and follows the same windows above.</li>
-      <li><span class="policy-icon">08</span> If I need to cancel a class (illness, low enrolment, etc.), you'll first be offered a makeup class. If that doesn't work for you, you'll receive full credit or a refund, your choice.</li>
-      <li><span class="policy-icon">09</span> No-shows aren't eligible for a refund or credit, but please get in touch. Life happens and exceptions are considered case by case.</li>
-      <li><span class="policy-icon">10</span> To cancel, email lenasimprovplace@gmail.com.</li>
-    </ul>
+  <div class="policy-list">
+    <details class="policy-item">
+      <summary>Packages (Foundation and Advanced)</summary>
+      <ul>
+        <li>Monthly packages are booked and paid in full: the 4-class Foundation package, the 2-class Foundation Teens package (Voula) and the Advanced package.</li>
+        <li>Cancel at least 72 hours before the first class for a full refund.</li>
+        <li>After that, packages are non-refundable.</li>
+      </ul>
+    </details>
+    <details class="policy-item">
+      <summary>Missed classes</summary>
+      <ul>
+        <li>Foundation: missed classes can't be made up or credited.</li>
+        <li>Advanced: if you miss a class, you can replace it with a Foundation class that same month, subject to space.</li>
+      </ul>
+    </details>
+    <details class="policy-item">
+      <summary>Private at-home sessions</summary>
+      <ul>
+        <li>Cancel or reschedule at least 72 hours before the session and I'll find a new time within the same month.</li>
+        <li>Cancellations within 72 hours, and no-shows, are charged in full.</li>
+      </ul>
+    </details>
+    <details class="policy-item">
+      <summary>Sound &amp; Story workshop and meditation sessions</summary>
+      <ul>
+        <li>Both are paid in advance.</li>
+        <li>Cancel at least 48 hours before for a full refund.</li>
+        <li>Cancellations within 48 hours, and no-shows, aren't eligible for a refund.</li>
+        <li>You're welcome to pass your spot to a friend. Just let me know their name.</li>
+      </ul>
+    </details>
+    <details class="policy-item">
+      <summary>If I need to cancel</summary>
+      <p>If I cancel a class or session (illness, low enrolment, etc.), you'll first be offered a makeup. If that doesn't work for you, you can choose full credit or a refund. Credit for classes I cancel can be used the following month.</p>
+    </details>
+    <details class="policy-item">
+      <summary>Exceptions</summary>
+      <p>Please get in touch if something comes up. For serious illness or emergencies, I'll always do my best to help.</p>
+    </details>
+    <details class="policy-item">
+      <summary>How to cancel</summary>
+      <p>Email <a href="mailto:lenasimprovplace@gmail.com">lenasimprovplace@gmail.com</a>.</p>
+    </details>
     <p class="policy-agreement">By enrolling and paying for a class or workshop, you agree to this cancellation policy.</p>
   </div>
 </section>
@@ -1455,7 +1519,7 @@
     </details>
     <details class="faq-item">
       <summary>What's your cancellation policy?</summary>
-      <p>See the full Cancellation Policy section above, but in short: 72+ hours notice gets a full refund, 48 to 72 hours gets credit and inside 48 hours isn't refundable.</p>
+      <p>See the full Cancellation Policy section above, it varies a little by class type, but in short: cancel with enough notice (72 hours for packages and private sessions, 48 hours for Sound &amp; Story and meditation) for a full refund.</p>
     </details>
     <details class="faq-item">
       <summary>I don't know anyone else coming, is that weird?</summary>
